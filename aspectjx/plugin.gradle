@@ -1,0 +1,48 @@
+// The project version will be used as your plugin version when publishing.
+version = '1.0.0'
+group = 'io.github.xiaoyun-sun'
+
+// Specify plugin properties that apply to the whole publishing bundle (ie. all plugins in the current publication).
+pluginBundle {  // Removed in Gradle 8+
+    website = 'https://github.com/xiaoyun-sun/aspectjx'
+    vcsUrl = 'https://github.com/xiaoyun-sun/aspectjx'
+
+    // Individual descriptions for plugins can be set via the java-gradle-plugin, see below.
+    // 插件描述
+    description = 'aop plugin'
+    // 搜索关键词
+    tags = ['aspectjx']
+
+    // Individual tags for published plugins; overrides bundle tags for the mentioned plugins.
+    // The keys used to specify the plugins must match the names of the blocks in 'gradlePlugin.plugins' (see below).
+    pluginTags = [
+            goodbyePlugin  : ['aspectjx'],
+            someOtherPlugin: ['aspectjx']
+    ]
+}
+
+// Use java-gradle-plugin to generate plugin descriptors and override individual plugin properties.
+// The names of the blocks inside 'plugins' need to be unique, they will identify the plugins being configured.
+// 'id', 'implementationClass' and 'displayName' are mandatory.
+// 'description' is optional and will override whatever description has been specified at bundle level, but
+// in the end a description must be set for each plugin at some level.
+gradlePlugin {
+    plugins {
+        greetingsPlugin {
+            id = 'io.github.xiaoyun-sun.aspectjx.greeting'
+            implementationClass = 'sun.gradle.plugin.aspectjx.AJXPlugin'
+            displayName = 'argc-aspectjx'
+        }
+        goodbyePlugin {
+            id = 'io.github.xiaoyun-sun.aspectjx'
+            implementationClass = 'sun.gradle.plugin.aspectjx.AJXPlugin'
+            displayName = 'argc-aspectjx'
+            description = 'aspectjx'
+        }
+        someOtherPlugin {
+            id = 'io.github.xiaoyun-sun.aspectjx.someother'
+            implementationClass = 'sun.gradle.plugin.aspectjx.AJXPlugin'
+            displayName = 'argc-aspectjx'
+        }
+    }
+}

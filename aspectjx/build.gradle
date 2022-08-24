@@ -1,0 +1,50 @@
+buildscript {
+    repositories {
+        maven { url 'https://jitpack.io' }
+        maven { url 'https://maven.aliyun.com/repository/google' }
+        maven { url 'https://maven.aliyun.com/repository/public' }
+        maven { url "https://maven.mapfarm.com/repository/maven-releases/" }
+        maven { url 'https://repo1.maven.org/maven2/' }
+        maven { url "https://maven.aliyun.com/nexus/content/repositories/releases" }
+        maven {url "https://plugins.gradle.org/m2/"}
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath "com.gradle.publish:plugin-publish-plugin:1.0.0"
+    }
+}
+
+repositories {
+    maven { url 'https://jitpack.io' }
+    maven { url 'https://maven.aliyun.com/repository/google' }
+    maven { url 'https://maven.aliyun.com/repository/public' }
+    maven { url "https://maven.mapfarm.com/repository/maven-releases/" }
+    maven { url 'https://repo1.maven.org/maven2/' }
+    maven { url "https://maven.aliyun.com/nexus/content/repositories/releases" }
+    maven {url "https://plugins.gradle.org/m2/"}
+    google()
+    jcenter()
+}
+apply plugin: 'groovy'
+apply plugin: 'maven-publish'
+apply plugin: "com.gradle.plugin-publish"
+
+
+apply from: "plugin.gradle"
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_1_8
+    targetCompatibility = JavaVersion.VERSION_1_8
+}
+dependencies {
+    implementation gradleApi()
+    implementation localGroovy()
+    implementation "com.android.tools.build:gradle:7.2.1"
+    implementation "org.aspectj:aspectjtools:1.9.7"
+    implementation "org.aspectj:aspectjweaver:1.9.7"
+    implementation "com.google.code.gson:gson:2.8.6"
+    implementation "commons-io:commons-io:2.4"
+    implementation "com.google.guava:guava:28.1-jre"
+    testImplementation("junit:junit:4.13")
+}
